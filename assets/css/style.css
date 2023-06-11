@@ -2,16 +2,17 @@
  * Van Elias De Hondt
  * https://eliasdh.com
  */
- /*==EliasDH CSS==*/
+ /* EliasDH CSS */
 .eliasdh {
      color: #4F94F0;
-     transition: all .3s ease-in-out; }
+     transition: all .3s ease-in-out; 
+}
    
-   .btn:hover,
-   .eliasdh:hover {
+   .btn:hover, .eliasdh:hover {
      text-decoration: none;
-     color: #4F94B0; }
-/*==EliasDH CSS==*/
+     color: #4F94B0; 
+}
+ /* EliasDH CSS */
 a {
      color: #70E654;
      transition: all .3s ease-in-out; }
