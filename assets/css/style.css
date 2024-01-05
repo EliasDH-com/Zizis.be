@@ -85,6 +85,13 @@ body {
 /* Contact us */
 
 /* Gallery */
+.gallery h1 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-top: 20px;
+    font-size: 32px;
+}
+
 .gallery {
     text-align: center;
     color: var(--secondary-color);
