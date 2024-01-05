@@ -23,13 +23,7 @@ body {
 
 main {
     margin-top: 5%;
-}
-
-@media only screen and (max-width: 600px) {
-    main {
-        margin-top: 5%;
-        margin-bottom: 35%;
-    }
+    margin-bottom: 150px;
 }
 
 /* Logo */
