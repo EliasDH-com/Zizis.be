@@ -3,38 +3,83 @@
 * @see https://eliasdh.com
 * @since 05/01/2024
 */
+:root {
+    --primary-color: #222222;
+    --secondary-color: #C3C3C3;
+}
+
+/* Scrollbars */
+body::-webkit-scrollbar {
+    height: none;
+}
+/* Scrollbars */
 
 body {
-    background-color: #222222;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: center;
     font-family: Arial, sans-serif;
 }
 
+/* Logo */
 .logo img {
     position: absolute;
+    padding: 10px;
     top: 0px;
     right: 0px;
-    width: 150px;
+    width: 10%;
 }
+/* Logo */
 
-h1 {
+/* Opening hours */
+.openinghours h1 {
     text-align: center;
-    color: #ffffff;
+    color: var(--secondary-color);
     margin-top: 20px;
     font-size: 32px;
 }
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    margin: 20px;
 }
 
 .column {
-    background-color: #f4f4f4;
+    background-color: var(--secondary-color);
     padding: 10px;
     border-radius: 8px;
     margin: 10px;
     width: 150px;
 }
+/* Opening hours */
+
+/* Contact us */
+.contactus h1 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+.contactus a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.contact-section {
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-info {
+    margin-top: 15px;
+}
+
+.contact-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+/* Contact us */
