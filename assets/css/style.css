@@ -3,16 +3,11 @@
 * @see https://eliasdh.com
 * @since 05/01/2024
 */
+
 :root {
     --primary-color: #222222;
     --secondary-color: #C3C3C3;
 }
-
-/* Scrollbars */
-body::-webkit-scrollbar {
-    height: 0px;
-}
-/* Scrollbars */
 
 body {
     background-color: var(--primary-color);
@@ -25,6 +20,12 @@ main {
     margin-top: 5%;
     margin-bottom: 150px;
 }
+
+/* Scrollbars */
+body::-webkit-scrollbar {
+    height: 0px;
+}
+/* Scrollbars */
 
 /* Logo */
 .logo img {

@@ -1,7 +1,7 @@
 /**
  * @author Elias De Hondt
  * @see https://eliasdh.com
- * @since 01/01/2020
+ * @since 05/01/2024
  */
 
 function loadHTML(myDivId, url) {
