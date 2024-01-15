@@ -59,6 +59,27 @@ main {
 }
 /* Opening hours */
 
+/* Info */
+.info h1 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+.info-container {
+    background-color: var(--secondary-color);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.info-item {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+/* Info */
+
 /* Contact us */
 .contactus h1 {
     text-align: center;
