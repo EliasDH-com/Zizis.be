@@ -7,12 +7,13 @@
 :root {
     --primary-color: #222222;
     --secondary-color: #C3C3C3;
+    --tertiary-color: #70E654;
 }
 
 body {
     background-color: var(--primary-color);
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Footer */
     font-family: Arial, sans-serif;
 }
 
@@ -40,7 +41,7 @@ body::-webkit-scrollbar {
 /* Opening hours */
 .openinghours h1 {
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
     margin-top: 20px;
     font-size: 32px;
 }
@@ -58,12 +59,17 @@ body::-webkit-scrollbar {
     margin: 10px;
     width: 150px;
 }
+
+.highlight {
+    background-color: var(--tertiary-color);
+    font-weight: bold;
+}
 /* Opening hours */
 
 /* Info */
 .info h1 {
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
     margin-top: 20px;
     font-size: 32px;
 }
@@ -84,7 +90,7 @@ body::-webkit-scrollbar {
 /* Contact us */
 .contactus h1 {
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
     margin-top: 20px;
     font-size: 32px;
 }
@@ -114,7 +120,7 @@ body::-webkit-scrollbar {
 /* Gallery */
 .gallery h1 {
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
     margin-top: 20px;
     font-size: 32px;
 }
@@ -147,3 +153,35 @@ body::-webkit-scrollbar {
     object-fit: cover;
 }
 /* Gallery */
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    .logo img {
+        width: 20%;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .openinghours .container,
+    .info .info-container,
+    .gallery .photo-container,
+    .contactus .contact-section {
+        width: 100%;
+    }
+
+    .column {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+/* Mobile */

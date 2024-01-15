@@ -33,31 +33,31 @@
          <section class="openinghours">
             <h1>Openingstijden</h1>
             <section class="container">
-               <div class="column">
+               <div class="column" id="monday">
                   <h2>Maandag</h2>
                   <p>Gesloten</p>
                </div>
-               <div class="column">
+               <div class="column" id="tuesday">
                   <h2>Dinsdag</h2>
                   <p>08:30 - 14:00</p>
                </div>
-               <div class="column">
+               <div class="column" id="wednesday">
                   <h2>Woensdag</h2>
                   <p>08:30 - 14:00</p>
                </div>
-               <div class="column">
+               <div class="column" id="thursday">
                   <h2>Donderdag</h2>
                   <p>08:30 - 20:00</p>
                </div>
-               <div class="column">
+               <div class="column" id="friday">
                   <h2>Vrijdag</h2>
                   <p>08:30 - 20:00</p>
                </div>
-               <div class="column">
+               <div class="column" id="saturday">
                   <h2>Zaterdag</h2>
                   <p>07:00 - 16:00</p>
                </div>
-               <div class="column">
+               <div class="column" id="sunday">
                   <h2>Zondag</h2>
                   <p>Gesloten</p>
                </div>
@@ -67,26 +67,20 @@
          <!--Info-->
          <section class="info">
             <h1>Info</h1>
-            <div class="info-container">
-               <div class="info-item">
-                  <h2>Over ons</h2>
-                  <p>Ontdek de kunst van haarverzorging in mijn gezellige zaak. Ik ben toegewijd aan jouw unieke stijl,</p>
-                  <p>of je nu een trendy knipbeurt, een gedurfde kleur, of een verfrissende styling wilt. Laat mij je helpen stralen met een look die net zo uniek is als jij!</p>
-               </div>
+            <div class="info-container info-item">
+               <h2>Over ons</h2>
+               <p>Ontdek de kunst van haarverzorging in mijn gezellige zaak. Ik ben toegewijd aan jouw unieke stijl,</p>
+               <p>of je nu een trendy knipbeurt, een gedurfde kleur, of een verfrissende styling wilt. Laat mij je helpen stralen met een look die net zo uniek is als jij!</p>
             </div>
             <br>
-            <div class="info-container">
-               <div class="info-item">
-                  <h2>Onze diensten</h2>
-                  <p>Wij bieden verschillende diensten aan. Wij knippen kinderen, vrouwen en mannen. Wij bieden ook kleuringen aan.</p>
-               </div>
+            <div class="info-container info-item">
+               <h2>Onze diensten</h2>
+               <p>Wij bieden verschillende diensten aan. Wij knippen kinderen, vrouwen en mannen. Wij bieden ook kleuringen aan.</p>
             </div>
             <br>
-            <div class="info-container">
-               <div class="info-item">
-                  <h2>Onze prijzen</h2>
-                  <p>Wij hanteren verschillende prijzen voor verschillende diensten. Voor meer informatie kan u ons contacteren.</p>
-               </div>
+            <div class="info-container info-item">
+               <h2>Onze prijzen</h2>
+               <p>Wij hanteren verschillende prijzen voor verschillende diensten. Voor meer informatie kan u ons contacteren.</p>
             </div>
          </section>
          <!--Info-->
@@ -137,6 +131,7 @@
       <!--Bottom-->
       <!--JS-->
       <script src="/assets/js/html-loader.js"></script>
+      <script src="/assets/js/opening-hours.js"></script>
       <script>
         loadHTML("Bottom", "https://eliasdh.com/assets/includes/bottom-external.html");
       </script>
