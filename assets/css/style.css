@@ -172,13 +172,6 @@ body::-webkit-scrollbar {
         display: none;
     }
 
-    .openinghours .container,
-    .info .info-container,
-    .gallery .photo-container,
-    .contactus .contact-section {
-        width: 100%;
-    }
-
     .column {
         width: 100%;
         margin: 10px 0;
