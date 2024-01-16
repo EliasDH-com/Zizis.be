@@ -9,15 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     var currentDay = daysOfWeek[today.getDay()];
 
-    // Remove the "highlight" class from all days
-    var allColumns = document.querySelectorAll('.column');
-    allColumns.forEach(function (column) {
-        column.classList.remove('highlight');
-    });
+    var allBoxes = document.querySelectorAll('.box-day');
+    allBoxes.forEach(function (box) {
+        var boxDay = box.id.toLowerCase();
 
-    // Add the "highlight" class to the current day
-    var currentColumn = document.getElementById(currentDay.toLowerCase());
-    if (currentColumn) {
-        currentColumn.classList.add('highlight');
-    }
+        if (boxDay === currentDay) {
+            box.classList.add('highlight');
+        } else {
+            box.classList.add('inactive-day');
+        }
+    });
 });
