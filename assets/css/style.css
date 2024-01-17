@@ -9,6 +9,7 @@
     --primary-color: #222222;
     --secondary-color: #C3C3C3;
     --tertiary-color: #70E654;
+    --quaternary-color: #ffffff;
 }
 /* Root */
 
@@ -50,11 +51,15 @@ body::-webkit-scrollbar-thumb {
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     display: flex;
+    font-family: 'Roboto', sans-serif;
 }
 
-.content {
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content, .content-info {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -74,7 +79,7 @@ body {
 .photo img {
     width: 100%;
     max-width: 300px;
-    border-radius: 10%;
+    border-radius: 10px;
     border: 8px solid var(--secondary-color);
     margin-bottom: 40px;
 }
@@ -109,12 +114,12 @@ body {
 .box-day {
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     flex: 1;
 }
 
 .inactive-day {
-    background-color: #ffffff;
+    background-color: var(--quaternary-color);
 }
 
 .highlight {
@@ -123,10 +128,10 @@ body {
 }
 
 .box {
-    background-color: #ffffff;
+    background-color: var(--quaternary-color);
     margin: 10px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     flex: 1;
     max-width: 400px;
 }
@@ -162,5 +167,49 @@ body {
     .left-side {
         display: none
     }
+
+    .right-side {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .content-info {
+        flex-direction: column;
+    }
+
+    .box {
+        width: 100%;
+        margin: 10px 0;
+    }
 }
 /* Mobile */
+
+/* Animations & transitions */
+.photo img { /* Image effect */
+    transition: transform 0.3s ease;
+}
+
+.photo img:hover { /* Hover effect */
+    transform: scale(1.1);
+}
+
+body { /* Gradient background */
+    background: linear-gradient(to right, var(--primary-color), var(--tertiary-color));
+}
+
+.box, .box-day, .logo img, .photo img { /* Shadow effects */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.box:hover, .box-day:hover, .logo:hover img, .photo:hover img { /* Shadow effects */
+    background-color: var(--tertiary-color);
+}
+
+.box { /* Rotate effect */
+    transition: transform 0.5s ease;
+}
+
+.box:hover { /* Rotate effect */
+    transform: rotate(5deg) scale(1.1);
+}
+/* Animations & transitions */
