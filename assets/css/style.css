@@ -238,8 +238,10 @@ h1, h2, h3 {
 /* Mobile */
 
 /* Animations & transitions */
-.photo img { /* Image effect */
+
+.photo img { 
     transition: transform 0.3s ease;
+    transform: scale(1);
 }
 
 .photo img:hover { /* Hover effect */
