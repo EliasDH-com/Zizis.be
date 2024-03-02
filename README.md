@@ -3,9 +3,9 @@
 
 ## 📘Table of Contents
 
-1. [Table of Contents](#📘table-of-contents)
-2. [Introduction](#🖖introduction)
-3. [Links](#🔗links)
+1. [📘Table of Contents](#📘table-of-contents)
+2. [🖖Introduction](#🖖introduction)
+3. [🔗Links](#🔗links)
 
 ---
 
