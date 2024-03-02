@@ -1,3 +1,4 @@
+![logo](https://eliasdh.com/assets/media/images/logo-github.png)
 # 💙🤍README🤍💙
 
 This is a static website for the company Zizis BV that is hosted on [EliasDH.com](https://eliasdh.com).
