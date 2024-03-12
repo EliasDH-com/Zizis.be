@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--Van Elias De Hondt-->
+<!--Author Elias De Hondt-->
 <html lang="nl">
     <head>
         <!--Meta + Title-->
