@@ -18,8 +18,6 @@ function loadHTML(myDivId, url) {
                    script.text = scripts[i].text;
                    document.body.appendChild(script);
                }
-           } else {
-               alert('Error');
            }
         }
     }
