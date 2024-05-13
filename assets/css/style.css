@@ -42,7 +42,7 @@ body::-webkit-scrollbar-thumb {
 /* Logo */
 
 /* Footer */
-#Bottom {
+#footer {
     left: 50%;
     transform: translateX(-50%);
 }
