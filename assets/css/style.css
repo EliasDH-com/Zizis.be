@@ -104,14 +104,6 @@ h1, h2, h3 {
     border: 8px solid var(--secondary-color);
     margin-bottom: 200px;
 }
-
-.photo img:nth-child(odd) {
-    transform: translate(100%, -20%);
-}
-
-.photo img:nth-child(even) {
-    transform: translate(100%, -20%);
-}
 /* Left-side */
 
 /* Right-side */
