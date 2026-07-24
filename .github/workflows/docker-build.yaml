@@ -53,5 +53,5 @@ jobs:
           curl -sf -X POST "https://app.eliasdh.com/api/v1/cluster/deploy/restart" \
             -H "X-API-Key: ${{ secrets.ELIASDH_API_KEY }}" \
             -H "Content-Type: application/json" \
-            -d "$(jq -nc --arg ns "$NAMESPACE" --arg domain "$DOMAIN" --argjson images "$IMAGES_JSON" \
-              '{namespace: $ns, domain: $domain, images: $images}')"
+            -d "$(jq -nc --arg ns "$NAMESPACE" --arg domain "$DOMAIN" --argjson images "$IMAGES_JSON" --arg runId "${{ github.run_id }}-${{ github.run_attempt }}" \
+              '{namespace: $ns, domain: $domain, images: $images, runId: $runId}')"
