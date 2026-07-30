@@ -6,12 +6,6 @@
 # Ignore default
 .vscode
 
-App/Backend/package-lock.json
-App/Backend/node_modules
-App/Backend/.env
-App/Backend/dist
-App/Backend/database.db
-
 App/Frontend/package-lock.json
 App/Frontend/node_modules
 App/Frontend/.angular

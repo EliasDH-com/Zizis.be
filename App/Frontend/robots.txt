@@ -5,8 +5,6 @@
 # All robots
 User-agent: *
 Allow: /
-Allow: /shop
-Allow: /shop/product/
 Allow: /assets/
 Allow: /assets/media/
 Allow: /assets/i18n/
@@ -16,8 +14,6 @@ Disallow: /admin/
 Disallow: /*.json$
 Disallow: /*?
 Disallow: /*&
-Disallow: /checkout
-Disallow: /success
 
 # Google specific
 User-agent: Googlebot
@@ -35,4 +31,3 @@ Crawl-delay: 2
 
 # Sitemaps
 Sitemap: https://zizis.be/sitemap.xml
-Sitemap: https://zizis.be/api/sitemap-products

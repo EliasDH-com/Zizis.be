@@ -1,9 +1,9 @@
 ############################
 # @author EliasDH Team     #
 # @see https://eliasdh.com #
-# @since 01/01/2025        #
+# @since 01/01/2026        #
 ############################
-# Stage 1: Build backend
+# Stage 1: build backend
 FROM node:20-alpine AS builder
 
 LABEL maintainer="EliasDH"

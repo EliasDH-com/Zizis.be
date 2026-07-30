@@ -37,9 +37,6 @@ jobs:
       - name: Build/Push Frontend Docker Image
         run: |
           docker build --push -t ghcr.io/eliasdhcom/zizisbe-frontend:latest ./App/Frontend
-      - name: Build/Push Backend Docker Image
-        run: |
-            docker build --push -t ghcr.io/eliasdhcom/zizisbe-backend:latest ./App/Backend
       - name: Notify EliasDH App to restart deployments
         if: github.event_name == 'push'
         env:
@@ -47,7 +44,6 @@ jobs:
           DOMAIN: zizis.be
           IMAGES: |
             ghcr.io/eliasdhcom/zizisbe-frontend:latest
-            ghcr.io/eliasdhcom/zizisbe-backend:latest
         run: |
           IMAGES_JSON=$(printf '%s' "$IMAGES" | jq -R . | jq -sc .)
           curl -sf -X POST "https://app.eliasdh.com/api/v1/cluster/deploy/restart" \

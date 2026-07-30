@@ -6,7 +6,6 @@
 1. [📘Table of Contents](#📘table-of-contents)
 2. [🚀Docker](#🚀docker)
     - [🚀Frontend](#🚀frontend)
-    - [🚀Backend](#🚀backend)
 
 ## 🚀Docker
 
@@ -27,22 +26,4 @@ sudo docker logs zizisbe-frontend-container
 sudo docker stop zizisbe-frontend-container
 sudo docker rm zizisbe-frontend-container
 sudo docker rmi ghcr.io/eliasdhcom/zizisbe-frontend:latest
-```
-
-### 🚀Backend
-```bash
-sudo docker pull ghcr.io/eliasdhcom/zizisbe-backend:latest
-sudo docker run --name zizisbe-backend-container -p 3000:3000 -d ghcr.io/eliasdhcom/zizisbe-backend:latest
-```
-
-- Check the logs
-```bash
-sudo docker logs zizisbe-backend-container
-```
-
-- Stop and remove the existing container and image
-```bash
-sudo docker stop zizisbe-backend-container
-sudo docker rm zizisbe-backend-container
-sudo docker rmi ghcr.io/eliasdhcom/zizisbe-backend:latest
 ```
