@@ -43,7 +43,8 @@ export class IndexComponent implements OnInit {
         'assets/media/images/gallery/photo2.png',
         'assets/media/images/gallery/photo3.png',
         'assets/media/images/gallery/photo4.png',
-        'assets/media/images/gallery/photo5.png'
+        'assets/media/images/gallery/photo5.png',
+        'assets/media/images/gallery/photo6.png'
     ];
 
     constructor(

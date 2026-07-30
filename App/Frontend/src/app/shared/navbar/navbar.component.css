@@ -14,6 +14,9 @@
 }
 
 .navbar-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     display: flex;
     align-items: center;
 }
@@ -30,8 +33,11 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     border: none;
@@ -94,8 +100,8 @@
 
 .navbar-logo {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
 }
 
 .navbar-logo-link {
@@ -132,7 +138,7 @@
         height: 18px;
     }
 
-    .navbar-logo {
+    .navbar-nav {
         top: 15px;
         right: 15px;
     }
@@ -166,7 +172,7 @@
         height: 16px;
     }
 
-    .navbar-logo {
+    .navbar-nav {
         top: 12px;
         right: 12px;
     }

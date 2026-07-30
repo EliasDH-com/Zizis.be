@@ -4,7 +4,7 @@
     * @since 01/01/2025
 **/
 
-import { Component, inject, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -22,7 +22,15 @@ export class NavbarComponent {
     dropdownOpen: boolean = false;
     currentLanguage: string = 'nl';
 
-    constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+    constructor(
+        private elementRef: ElementRef,
+        @Inject(PLATFORM_ID) private platformId: Object
+    ) {}
+
+    @HostListener('document:click', ['$event'])
+    onClickOutside(event: MouseEvent): void {
+        if (!this.elementRef.nativeElement.contains(event.target)) this.dropdownOpen = false;
+    }
 
     settingsConfig = {
         languages: [
