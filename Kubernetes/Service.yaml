@@ -1,0 +1,19 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zizisbe-frontend-service
+  namespace: zizisbe
+spec:
+  selector:
+    app: zizisbe-frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 4000
+---

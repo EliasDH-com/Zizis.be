@@ -1,0 +1,47 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zizisbe-ingress
+  namespace: zizisbe
+  annotations:
+    cert-manager.io/issuer: "zizisbe-letsencrypt-issuer"
+    nginx.ingress.kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true" # Redirect HTTP to HTTPS
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - zizis.be
+      secretName: zizisbe-tls
+    - hosts:
+      - www.zizis.be
+      secretName: wwwzizisbe-tls
+  rules:
+    - host: zizis.be
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: zizisbe-frontend-service
+                port:
+                  number: 80
+    - host: www.zizis.be
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: zizisbe-frontend-service
+                port:
+                  number: 80
+---

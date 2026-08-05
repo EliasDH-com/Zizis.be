@@ -1,0 +1,19 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zizisbe
+  labels:
+    name: zizisbe
+    app: zizisbe
+    owner: EliasDH
+    environment: production
+  annotations:
+    description: This namespace is used for the zizisbe application.
+    contact: info@eliasdh.com
+---
