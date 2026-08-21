@@ -12,6 +12,12 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      target_domain:
+        description: 'Override the Ingress host (used by the Demo/Publish flow)'
+        required: false
+        type: string
 
 jobs:
   build-push-frontend:
