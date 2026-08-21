@@ -37,17 +37,51 @@ jobs:
       - name: Build/Push Frontend Docker Image
         run: |
           docker build --push -t ghcr.io/eliasdhcom/zizisbe-frontend:latest ./App/Frontend
-      - name: Notify EliasDH App to restart deployments
-        if: github.event_name == 'push'
+      - name: Notify EliasDH App to restart/provision deployments
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           NAMESPACE: zizisbe
-          DOMAIN: zizis.be
+          DOMAIN: ${{ github.event.inputs.target_domain || 'zizis.be' }}
           IMAGES: |
             ghcr.io/eliasdhcom/zizisbe-frontend:latest
+          GHCR_REGISTRY: ghcr.io
+          GHCR_USERNAME: eliasdhcom
+          GHCR_EMAIL: info@eliasdh.com
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          ELIASDH_API_KEY: ${{ secrets.ELIASDH_API_KEY }}
         run: |
           IMAGES_JSON=$(printf '%s' "$IMAGES" | jq -R . | jq -sc .)
+          SECRET_VARS='${ELIASDH_API_KEY} ${GH_PAT} ${SMTP_PASS} ${ADMIN_PASSWORD} ${VAPID_PUBLIC_KEY} ${VAPID_PRIVATE_KEY} ${VAULT_ENCRYPTION_KEY} ${POSTGRES_DB} ${POSTGRES_USER} ${POSTGRES_PASSWORD} ${DATABASE_URL} ${OVH_APP_KEY} ${OVH_APP_SECRET} ${OVH_CONSUMER_KEY} ${RECOMMAND_API_KEY} ${RECOMMAND_API_SECRET} ${CLEARFACTS_API_TOKEN} ${STRIPE_SECRET_KEY} ${STRIPE_WEBHOOK_SECRET} ${MIGADU_API_KEY}'
+
+          MANIFESTS_TMP=$(mktemp)
+          envsubst "$SECRET_VARS" < Kubernetes/Secret.template.yaml | jq -R -s . >> "$MANIFESTS_TMP"
+
+          jq -nc \
+            --arg ns "$NAMESPACE" --arg server "$GHCR_REGISTRY" \
+            --arg user "$GHCR_USERNAME" --arg pass "$GHCR_TOKEN" --arg email "$GHCR_EMAIL" \
+            '($user + ":" + $pass) as $userpass |
+             {
+               apiVersion: "v1",
+               kind: "Secret",
+               metadata: { name: "github-registry", namespace: $ns },
+               type: "kubernetes.io/dockerconfigjson",
+               stringData: {
+                 ".dockerconfigjson": ({ auths: { ($server): { username: $user, password: $pass, email: $email, auth: ($userpass | @base64) } } } | tojson)
+               }
+             }' | jq -R -s . >> "$MANIFESTS_TMP"
+
+          for f in Kubernetes/*.yaml; do
+            base=$(basename "$f")
+            [ "$base" = "Secret.yaml" ] && continue
+            [ "$base" = "Secret.template.yaml" ] && continue
+            jq -R -s . < "$f" >> "$MANIFESTS_TMP"
+          done
+          MANIFESTS_JSON=$(jq -sc . "$MANIFESTS_TMP")
+          rm -f "$MANIFESTS_TMP"
+
           curl -sf -X POST "https://app.eliasdh.com/api/v1/cluster/deploy/restart" \
             -H "X-API-Key: ${{ secrets.ELIASDH_API_KEY }}" \
             -H "Content-Type: application/json" \
-            -d "$(jq -nc --arg ns "$NAMESPACE" --arg domain "$DOMAIN" --argjson images "$IMAGES_JSON" --arg runId "${{ github.run_id }}-${{ github.run_attempt }}" \
-              '{namespace: $ns, domain: $domain, images: $images, runId: $runId}')"
+            -d "$(jq -nc --arg ns "$NAMESPACE" --arg domain "$DOMAIN" --argjson images "$IMAGES_JSON" --argjson manifests "$MANIFESTS_JSON" --arg runId "${{ github.run_id }}-${{ github.run_attempt }}" \
+              '{namespace: $ns, domain: $domain, images: $images, manifests: $manifests, runId: $runId}')"
