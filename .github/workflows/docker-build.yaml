@@ -56,9 +56,10 @@ jobs:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
           ELIASDH_API_KEY: ${{ secrets.ELIASDH_API_KEY }}
+          CLUSTER_DEPLOY_TOKEN: ${{ secrets.CLUSTER_DEPLOY_TOKEN }}
         run: |
           IMAGES_JSON=$(printf '%s' "$IMAGES" | jq -R . | jq -sc .)
-          SECRET_VARS='${GHCR_TOKEN} ${GH_PAT} ${ELIASDH_API_KEY}'
+          SECRET_VARS='${GHCR_TOKEN} ${GH_PAT} ${ELIASDH_API_KEY} ${CLUSTER_DEPLOY_TOKEN}'
 
           MANIFESTS_TMP=$(mktemp)
           envsubst "$SECRET_VARS" < Kubernetes/Secret.template.yaml | jq -R -s . >> "$MANIFESTS_TMP"
@@ -88,6 +89,8 @@ jobs:
 
           curl -sf -X POST "https://app.eliasdh.com/api/v1/cluster/deploy/restart" \
             -H "X-API-Key: ${{ secrets.ELIASDH_API_KEY }}" \
+            -H "X-Deploy-Token: ${{ secrets.CLUSTER_DEPLOY_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "$(jq -nc --arg ns "$NAMESPACE" --arg domain "$DOMAIN" --argjson images "$IMAGES_JSON" --argjson manifests "$MANIFESTS_JSON" --arg runId "${{ github.run_id }}-${{ github.run_attempt }}" \
+              '{namespace: $ns, domain: $domain, images: $images, manifests: $manifests, runId: $runId}')"sts "$MANIFESTS_JSON" --arg runId "${{ github.run_id }}-${{ github.run_attempt }}" \
               '{namespace: $ns, domain: $domain, images: $images, manifests: $manifests, runId: $runId}')"
