@@ -92,5 +92,4 @@ jobs:
             -H "X-Deploy-Token: ${{ secrets.CLUSTER_DEPLOY_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "$(jq -nc --arg ns "$NAMESPACE" --arg domain "$DOMAIN" --argjson images "$IMAGES_JSON" --argjson manifests "$MANIFESTS_JSON" --arg runId "${{ github.run_id }}-${{ github.run_attempt }}" \
-              '{namespace: $ns, domain: $domain, images: $images, manifests: $manifests, runId: $runId}')"sts "$MANIFESTS_JSON" --arg runId "${{ github.run_id }}-${{ github.run_attempt }}" \
               '{namespace: $ns, domain: $domain, images: $images, manifests: $manifests, runId: $runId}')"
